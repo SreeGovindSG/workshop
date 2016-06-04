@@ -43,19 +43,28 @@
            </form>
            <ul class="nav navbar-nav navbar-right">
                <li><a href="#">Link</a></li>
-               <li class="dropdown">
-                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                   <ul class="dropdown-menu">
-                       <li><a href="#">Action</a></li>
-                       <li><a href="#">Another action</a></li>
-                       <li><a href="#">Something else here</a></li>
-                       <li role="separator" class="divider"></li>
-                       <li><a href="#">Separated link</a></li>
-                   </ul>
-               </li>
-           </ul>
-       </div><!-- /.navbar-collapse -->
-   </div><!-- /.container-fluid -->
+               <ul class="dropdown-menu">
+                        {% if user.is_anonymous %}
+                        <li><a href="{% url 'user_signup' %}">Sign Up</a></li>
+                        <li><a href="{% url 'login' %}">Sign In</a></li>
+                        {% else %}
+                        <li>
+                            <div class="btn-group">
+                                <li><a href="{% url 'logout' %}">Signout</a></li>
+                                <a class="btn-new btn-nav btn-white" data-toggle="dropdown"><i class="fa fa-user fa-fw"></i>
+                                    {% if request.user.user_first_name %}
+                                    {{ request.user.user_first_name }}
+                                    {% elif request.user.username %}
+                                    {{ request.user.username }}
+                                    {% else %}
+                                    {{ request.user.email }}
+                                    {% endif %}
+                                    {% endif %}
+                    </ul>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
 </nav>This is body
 </body>
 </html>

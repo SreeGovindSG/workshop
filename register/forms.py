@@ -1,15 +1,15 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
-
+#from bootstrap3_datetime.widgets import DateTimePicker
+#from captcha.fields import ReCaptchaField
 from register.models import *
 from django.forms.models import ModelForm
-
+from django.contrib import admin
+#from ckeditor.widgets import CKEditorWidget
 
 
 user_widgets = {
     'user_first_name': forms.TextInput(attrs={'placeholder':_('First Name'), 'required': True}),
-
-
     'user_last_name': forms.TextInput(attrs={'placeholder':_('Last Name'),
                                              'required': True}),
     'email': forms.TextInput(attrs={'placeholder':_('Your Email address'),
